@@ -1,0 +1,68 @@
+body{
+  background: #000;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+
+.text-effect{
+  position: relative;
+  overflow: hidden;
+  filter: contrast(110%) brightness(190%);
+}
+
+.neon{
+  color: transparent;
+  background: #000;
+  font: 700 30px 'Lato', cursive;
+  text-transform: uppercase;
+  text-align: center;
+  margin: 0;
+}
+
+.neon::before,
+.neon::after{
+  content: attr(data-text);
+  filter: blur(0.02em);
+  color: #fff;
+  position: absolute;
+  pointer-events: none;
+  top: 0;
+  left: 0;
+}
+
+.neon::after{
+  mix-blend-mode: difference;
+}
+
+.gradient, .spotlight{
+  position: absolute;
+  pointer-events: none;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 10;
+}
+
+.gradient{
+  background: linear-gradient(45deg, #F70528, #0513F7);
+  mix-blend-mode: multiply;
+}
+
+.spotlight{
+  animation: anime 5s linear infinite;
+  animation-delay: 0.5s;
+  background: radial-gradient(circle, #fff, transparent 25%) 0 0/25% 25%, radial-gradient(circle, #fff, #000 25%), 50% 50%/12% 12.51%;
+  mix-blend-mode: color-dodge;
+  top: -100%;
+  left: -100%;
+}
+
+@keyframes anime{
+  100%{
+    transform: translate3d(50%, 50%, 0);
+  }
+}
